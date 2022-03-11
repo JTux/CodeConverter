@@ -25,8 +25,6 @@ public partial class MainLayout
         }
     };
 
-    private bool IsTerminal => data.Language == "terminal-text";
-
     private void ResetSettings()
     {
         data.IsCodeTag = false;

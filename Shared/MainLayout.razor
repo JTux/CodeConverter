@@ -19,7 +19,7 @@
                 Match Braces
             </SettingToggle>
 
-            @if (data.IsCodeTag == false && !IsTerminal)
+            @if (data.IsCodeTag == false && !data.IsTerminal)
             {
                 <NumberSetToggle @bind-IsActive="data.HasLineNumbers" @bind-Number="data.StartingLineNumber" Label="Line Numbers" />
             }

@@ -1,9 +1,27 @@
 @page "/"
 
 <PageTitle>Code Converter</PageTitle>
-@Data.Language 
-@Data.HasLineNumbers
 
-@code {
-    [CascadingParameter] public ConverterData? Data { get; set; }
-}
+@* @inject IJSRuntime jsRuntime *@
+
+<div class="output-container">
+    <div class="row justify-content-around">
+        <div class="col-lg-6 row flex-column">
+            <h3 class="box-header">Insert Your Code Here</h3>
+            <textarea class="code-box" @bind="Input" @bind:event="oninput"></textarea>
+            <button class="btn btn-danger rounded-0" @onclick="Clear">Clear</button>
+        </div>
+
+        <div class="col-lg-6 row flex-column">
+            <h3 class="box-header">Copy Canvas Compatible Code Here</h3>
+            <textarea readonly class="code-box" style="min-height: 40vh;">@Output</textarea>
+            @if (Input?.Length > 0)
+            {
+                <div class="code-box p-2" style="min-height: unset; max-height: 40vh; flex-grow: unset; border-top: none;">
+                    @PreviewOutput
+                </div>
+            }
+            <button class="btn btn-primary rounded-0" @onclick="CopyOutput">Copy to Clipboard</button>
+        </div>
+    </div>
+</div>
