@@ -1,0 +1,10 @@
+<li class="px-3 py-1 d-flex" style="font-size: .9rem; overflow: hidden;">
+    <select value="@Value" class="btn btn-sm toggle-btn btn-primary w-100"
+        @onchange="async args => await OnValueChangedAsync(args)">
+
+        @foreach (var option in Options ?? new SelectItem[0])
+        {
+            <option value="@option.Value">@option.Label</option>
+        }
+    </select>
+</li>

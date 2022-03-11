@@ -2,15 +2,50 @@
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu />
+        <NavMenu>
+            <li>
+                <h5 class="text-center m-0 text-white">Settings</h5>
+            </li>
+            
+            <OptionToggle @bind-Value="language" Options="Languages" />
+
+            <SlideToggle @bind-IsActive="isCodeTag" InactiveLabel="Pre Tag" ActiveLabel="Code Tag" />
+
+            <SettingToggle @bind-IsActive="isCopyable" ActiveClass="btn-warning">
+                Copyable Code
+            </SettingToggle>
+
+            <SettingToggle @bind-IsActive="matchBraces" ActiveClass="btn-secondary">
+                Match Braces
+            </SettingToggle>
+
+            @if (isCodeTag == false && !IsTerminal)
+            {
+                <NumberSetToggle @bind-IsActive="hasLineNumbers" @bind-Number="startingLineNumber" Label="Line Numbers" />
+            }
+
+            <li>
+                <hr class="my-2 mx-auto w-75 text-white" />
+            </li>
+            <li class="px-3 py-1" style="font-size: .9rem;">
+                <button class="btn btn-sm toggle-btn btn-danger w-100" @onclick="ResetSettings">
+                    Reset Settings
+                </button>
+            </li>
+        </NavMenu>
     </div>
 
     <main>
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            This Code Converter is used to convert code snippets to compatible HTML.
         </div>
 
         <article class="content px-4">
+            <div>Language: @language</div>
+            <div>Tag Type: @(isCodeTag ? "code" : "pre")</div>
+            <div>Copyable Code: @isCopyable</div>
+            <div>Match Braces: @matchBraces</div>
+            <div>Line Number: @startingLineNumber</div>
             @Body
         </article>
     </main>

@@ -1,0 +1,8 @@
+<li class="px-3 py-1 d-flex" style="font-size: .9rem; overflow: hidden;">
+    <button class="btn btn-sm toggle-btn btn-primary @(IsActive ? InactiveClass : ActiveClass) w-100" @onclick="ToggleIsActiveAsync">
+        @InactiveLabel
+    </button>
+    <button class="btn btn-sm toggle-btn btn-info @(IsActive ? ActiveClass : InactiveClass) w-100" @onclick="ToggleIsActiveAsync">
+        @ActiveLabel
+    </button>
+</li>

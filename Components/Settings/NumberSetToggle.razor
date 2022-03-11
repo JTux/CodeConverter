@@ -1,0 +1,7 @@
+<li class="px-3 py-1 d-flex" style="font-size: .9rem;">
+    <button class="btn btn-sm toggle-btn @(IsActive ? ActiveClass : InactiveClass) @ButtonClasses"
+        @onclick="ToggleIsActiveAsync">
+        @Label
+    </button>
+    <input class="@InputClasses text-center" type="number" min="1" value="@Number" @onchange="async args => await OnValueChangedAsync(args)">
+</li>

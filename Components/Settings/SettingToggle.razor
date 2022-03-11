@@ -1,0 +1,5 @@
+<li class="px-3 py-1" style="font-size .9rem;">
+    <button class="btn btn-sm toggle-btn @(IsActive ? ActiveClass : InactiveClass) w-100" @onclick="ToggleIsActiveAsync">
+        @ChildContent
+    </button>
+</li>
