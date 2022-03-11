@@ -6,7 +6,7 @@
             <li>
                 <h5 class="text-center m-0 text-white">Settings</h5>
             </li>
-            
+
             <OptionToggle @bind-Value="language" Options="Languages" />
 
             <SlideToggle @bind-IsActive="isCodeTag" InactiveLabel="Pre Tag" ActiveLabel="Code Tag" />
@@ -35,18 +35,17 @@
         </NavMenu>
     </div>
 
-    <main>
-        <div class="top-row px-4">
+    <main class="main d-flex flex-column">
+        <div class="top-row px-4" style="font-style: italic;">
             This Code Converter is used to convert code snippets to compatible HTML.
         </div>
 
-        <article class="content px-4">
-            <div>Language: @language</div>
-            <div>Tag Type: @(isCodeTag ? "code" : "pre")</div>
-            <div>Copyable Code: @isCopyable</div>
-            <div>Match Braces: @matchBraces</div>
-            <div>Line Number: @startingLineNumber</div>
+        <article class="content px-4 flex-grow-1">
             @Body
         </article>
+
+        <footer class="px-4 pt-2 text-center" style="font-size: .8rem; color: #888;">
+            &copy; @DateTime.Now.Year ya boy JTux
+        </footer>
     </main>
 </div>
