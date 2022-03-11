@@ -7,21 +7,21 @@
                 <h5 class="text-center m-0 text-white">Settings</h5>
             </li>
 
-            <OptionToggle @bind-Value="language" Options="Languages" />
+            <OptionToggle @bind-Value="data.Language" Options="data.Languages" />
 
-            <SlideToggle @bind-IsActive="isCodeTag" InactiveLabel="Pre Tag" ActiveLabel="Code Tag" />
+            <SlideToggle @bind-IsActive="data.IsCodeTag" InactiveLabel="Pre Tag" ActiveLabel="Code Tag" />
 
-            <SettingToggle @bind-IsActive="isCopyable" ActiveClass="btn-warning">
+            <SettingToggle @bind-IsActive="data.IsCopyable" ActiveClass="btn-warning">
                 Copyable Code
             </SettingToggle>
 
-            <SettingToggle @bind-IsActive="matchBraces" ActiveClass="btn-secondary">
+            <SettingToggle @bind-IsActive="data.MatchBraces" ActiveClass="btn-secondary">
                 Match Braces
             </SettingToggle>
 
-            @if (isCodeTag == false && !IsTerminal)
+            @if (data.IsCodeTag == false && !IsTerminal)
             {
-                <NumberSetToggle @bind-IsActive="hasLineNumbers" @bind-Number="startingLineNumber" Label="Line Numbers" />
+                <NumberSetToggle @bind-IsActive="data.HasLineNumbers" @bind-Number="data.StartingLineNumber" Label="Line Numbers" />
             }
 
             <li>
@@ -41,10 +41,12 @@
         </div>
 
         <article class="content px-4 flex-grow-1">
-            @Body
+            <CascadingValue Value="data">
+                @Body
+            </CascadingValue>
         </article>
 
-        <footer class="px-4 pt-2 text-center" style="font-size: .8rem; color: #888;">
+        <footer class="px-4 pt-2 pb-1 text-center" style="font-size: .8rem; color: #888;">
             &copy; @DateTime.Now.Year ya boy JTux
         </footer>
     </main>

@@ -1,0 +1,9 @@
+@page "/"
+
+<PageTitle>Code Converter</PageTitle>
+@Data.Language 
+@Data.HasLineNumbers
+
+@code {
+    [CascadingParameter] public ConverterData? Data { get; set; }
+}
